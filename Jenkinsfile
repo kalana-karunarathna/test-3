@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_HUB_USER       = "kalana1234"  // Replace with your Docker Hub username
-        DOCKER_CREDENTIALS    = "test-jenkins"        // Jenkins credentials ID for Docker Hub
+        DOCKER_CREDENTIALS    = "testpipeline"        // Jenkins credentials ID for Docker Hub
         BACKEND_IMAGE_NAME    = "backend_container"
         FRONTEND_IMAGE_NAME   = "frontend_container"
     }
