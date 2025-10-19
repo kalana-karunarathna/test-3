@@ -10,10 +10,10 @@ const Todo = require("./models/Todo");
 app.use(cors());
 app.use(express.json());
 
-// ✅ Docker-Compatible MongoDB Connection
-mongoose.connect("mongodb://mongo:27017/todo-list")
+const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/todo-list";
 
-
+mongoose
+  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("✅ Connected to MongoDB"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 

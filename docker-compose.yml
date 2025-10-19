@@ -1,7 +1,8 @@
-version: "3"
+version: "3.8"
+
 services:
   mongo:
-    image: mongo
+    image: mongo:latest
     container_name: mongo_container
     ports:
       - "27017:27017"
@@ -16,11 +17,11 @@ services:
     depends_on:
       - mongo
     environment:
-      - MONGO_URL=mongodb://mongo:27017/todo-list
-
+      - MONGO_URI=mongodb://mongo:27017/todo-list
+      - PORT=5000
     volumes:
       - ./backend:/app
-      - /app/node_modules
+    command: ["npm", "start"]
 
   frontend:
     build: ./frontend
@@ -33,6 +34,7 @@ services:
     tty: true
     volumes:
       - ./frontend:/app
-      - /frontend/node_modules
+    command: ["npm", "start"]
+
 volumes:
   mongo_data:
